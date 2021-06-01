@@ -51,8 +51,10 @@ jobs:
         java -jar xModuleAnalyzer.jar -xModulePath multimodule.txt -fsaJarPath ./wss-unified-agent.jar -c ./eua.config -aggregateModules true -viaDebug true
         cp -r whitesource Whitesource-Logs
         cp -r /tmp/whitesource* Whitesource-Logs
-        cp -r /tmp/MultiModuleAnalyzer* Whitesource-Logs
-        
+        echo 'ls tmp'
+        ls /tmp
+#        cp -r /tmp/MultiModuleAnalyzer* Whitesource-Logs
+
     - name: 'Upload Artifact'
       uses: actions/upload-artifact@v2
       with:
