@@ -49,17 +49,19 @@ jobs:
         echo 'multimodule.txt contents'
         cat multimodule.txt
         java -jar xModuleAnalyzer.jar -xModulePath multimodule.txt -fsaJarPath ./wss-unified-agent.jar -c ./eua.config -aggregateModules true -viaDebug true
-        cp -r whitesource Whitesource-Logs
-        cp -r /tmp/whitesource* Whitesource-Logs
+        cp -r /tmp/whitesource* Prioritize-Logs
         echo 'ls tmp'
         ls /tmp
-#        cp -r /tmp/MultiModuleAnalyzer* Whitesource-Logs
+        cp -r /tmp/ws-ua* Whitesource-Logs
 
-    - name: 'Upload Artifact'
+
+    - name: 'Upload Prioritize Logs'
       uses: actions/upload-artifact@v2
       with:
         name: Whitesource-Logs
-        path: whitesource
+        path: |
+          ./whitesource
+          ./Prioritize-Logs
         retention-days: 1
 
 
